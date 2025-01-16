@@ -10,11 +10,9 @@
       text-align: center;
       margin: 0;
       padding: 0;
-      background-image: url('image.jpg'), url('image.jpg'), url('image.jpg'); /* Use the same image three times */
-      background-size: contain; /* Maintain aspect ratio */
-      background-repeat: no-repeat; /* Prevent repeating of individual images */
-      background-position: left, center, right; /* Place images side by side */
-      height: 100vh; /* Full viewport height */
+      background: url('path_to_your_image.jpg') no-repeat center center; /* Update with your image path */
+      background-size: cover; /* Ensures the background image covers the entire screen */
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -24,21 +22,19 @@
     #message {
       font-size: 36px;
       margin-bottom: 20px;
-      color: #000000; /* Default to black text color */
-      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); /* White text shadow for contrast */
+      color: #ffffff; /* White text color for better contrast */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Darker shadow for contrast */
     }
-
     input {
       font-size: 18px;
       padding: 10px;
       margin: 10px;
       border-radius: 8px;
       border: none;
-      background: rgba(255, 255, 255, 0.3);
-      color: #000000; /* Default to black text color */
+      background: rgba(255, 255, 255, 0.7); /* Slightly more opaque for visibility */
+      color: #000000; /* Black text color for inputs */
       outline: none;
     }
-
     button {
       font-family: 'Caveat', cursive;
       font-size: 20px;
@@ -47,20 +43,17 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      background-color: #4caf50;
-      color: #000000; /* Default to black text color */
+      background-color: #ff9800; /* Lighter orange for a vibrant look */
+      color: #ffffff; /* White text color for contrast */
       transition: background-color 0.3s ease;
     }
-
     button:hover {
-      background-color: #45a049;
+      background-color: #e68900; /* Darker orange on hover */
     }
-
     #resultMessage {
       font-size: 24px;
       margin-top: 20px;
-      color: #000000; /* Default black color for message */
-      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); /* White shadow for contrast */
+      color: #ffffff; /* Ensure message text is white */
     }
   </style>
 </head>
@@ -70,7 +63,7 @@
 <input type="text" id="nameInput" placeholder="Name">
 <input type="text" id="surnameInput" placeholder="Surname">
 <input type="date" id="birthdayInput">
-<input type="color" id="colorInput" value="#000000" onchange="changeTextColor(this.value)">
+<input type="color" id="colorInput" value="#ffffff" onchange="changeTextColor(this.value)">
 <button id="submitInfo" onclick="checkBirthday()">Submit</button>
 <p id="resultMessage"></p>
 
@@ -81,11 +74,9 @@
     var birthdayInput = document.getElementById('birthdayInput').value;
     var textColor = document.getElementById('colorInput').value;
 
-    // Check if the entered birthday matches the target date (January 16, 2007)
-    if (birthdayInput === '2007-01-16') {  
+    if (birthdayInput === '2007-01-16') {  // Check if entered birthday is 
       var age = calculateAge(new Date(birthdayInput));
 
-      // Display the celebration message with the custom age and name
       document.getElementById("resultMessage").innerHTML = "Happy " + age + "th Birthday, Angel " + name + " " + surname + "! 🎉 🥳 🎂";
       document.getElementById("resultMessage").style.color = textColor;  // Set celebration message color
     } else {
@@ -96,12 +87,6 @@
   function calculateAge(birthday) {
     var today = new Date();
     var age = today.getFullYear() - birthday.getFullYear();
-
-    // Adjust age if the birthday hasn't occurred yet this year
-    var monthDifference = today.getMonth() - birthday.getMonth();
-    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthday.getDate())) {
-      age--;
-    }
 
     return age;
   }
