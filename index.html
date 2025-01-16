@@ -5,19 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Birthday Celebration</title>
   <style>
-body {
-  font-family: 'Caveat', cursive;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  background: url('image.jpg') ;
-  background-size: contain; /* Ensure the background fills the screen and covers all gaps */
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+ body {
+      font-family: 'Caveat', cursive;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background: url('image.jpg'), url('image.jpg'), url('image.jpg'); /* Use the same image three times */
+      background-size: contain; /* Maintain aspect ratio */
+      background-repeat: no-repeat; /* Prevent repeating of individual images */
+      background-position: left, center, right; /* Place images side by side */
+      height: 100vh; /* Full viewport height */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
 
 
 
